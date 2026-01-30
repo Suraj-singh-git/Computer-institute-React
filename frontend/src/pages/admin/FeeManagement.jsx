@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import client from '../../api/client';
+import { useToast } from '../../context/ToastContext';
 
 export default function FeeManagement() {
   const [list, setList] = useState([]);
@@ -10,6 +12,7 @@ export default function FeeManagement() {
   const [showPayment, setShowPayment] = useState(null);
   const [paymentForm, setPaymentForm] = useState({ amount: '', payment_date: new Date().toISOString().slice(0, 10), payment_method: 'cash' });
   const [students, setStudents] = useState([]);
+  const [search, setSearch] = useState('');
 
   const load = () => client.get('/fees').then(({ data }) => setList(data)).finally(() => setLoading(false));
 
@@ -26,34 +29,47 @@ export default function FeeManagement() {
 
   const createFee = async (e) => {
     e.preventDefault();
-    await client.post('/fees', {
-      user_id: Number(createForm.user_id),
-      assign_course_id: Number(createForm.assign_course_id),
-      total_fee: Number(createForm.total_fee),
-      payment_mode: createForm.payment_mode,
-    });
-    setShowCreate(false);
-    setCreateForm({ user_id: '', assign_course_id: '', total_fee: '', payment_mode: 'one_time' });
-    load();
+    try {
+      await client.post('/fees', {
+        user_id: Number(createForm.user_id),
+        assign_course_id: Number(createForm.assign_course_id),
+        total_fee: Number(createForm.total_fee),
+        payment_mode: createForm.payment_mode,
+      });
+      setShowCreate(false);
+      setCreateForm({ user_id: '', assign_course_id: '', total_fee: '', payment_mode: 'one_time' });
+      load();
+      toast.success('Fee record created.');
+    } catch (err) {
+      toast.error(err.response?.data?.error || 'Failed to create fee record');
+    }
   };
 
   const addPayment = async (e) => {
     e.preventDefault();
-    await client.post(`/fees/${showPayment}/payments`, {
-      amount: Number(paymentForm.amount),
-      payment_date: paymentForm.payment_date,
-      payment_method: paymentForm.payment_method,
-    });
-    setShowPayment(null);
-    setPaymentForm({ amount: '', payment_date: new Date().toISOString().slice(0, 10), payment_method: 'cash' });
-    load();
+    try {
+      await client.post(`/fees/${showPayment}/payments`, {
+        amount: Number(paymentForm.amount),
+        payment_date: paymentForm.payment_date,
+        payment_method: paymentForm.payment_method,
+      });
+      setShowPayment(null);
+      setPaymentForm({ amount: '', payment_date: new Date().toISOString().slice(0, 10), payment_method: 'cash' });
+      load();
+      toast.success('Payment recorded.');
+    } catch (err) {
+      toast.error(err.response?.data?.error || 'Failed to record payment');
+    }
   };
 
   return (
     <div>
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
         <h1 className="text-2xl font-semibold text-slate-800">Fee Management</h1>
-        <button onClick={() => setShowCreate(true)} className="px-4 py-2 rounded-lg bg-amber-500 text-slate-900 font-medium hover:bg-amber-400">Create Fee Record</button>
+        <div className="flex items-center gap-3">
+          <input type="text" placeholder="Search by student name or email..." value={search} onChange={(e) => setSearch(e.target.value)} className="px-4 py-2 rounded-lg border border-slate-300 w-64 text-sm" />
+          <button onClick={() => setShowCreate(true)} className="px-4 py-2 rounded-lg bg-amber-500 text-slate-900 font-medium hover:bg-amber-400">Create Fee Record</button>
+        </div>
       </div>
       {showCreate && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-10 p-4">
@@ -61,7 +77,7 @@ export default function FeeManagement() {
             <h2 className="font-semibold text-slate-800">Create Fee Record</h2>
             <select value={createForm.user_id} onChange={(e) => setCreateForm({ ...createForm, user_id: e.target.value, assign_course_id: '' })} className="w-full px-4 py-2 rounded-lg border border-slate-300" required>
               <option value="">Select student</option>
-              {students.map((s) => <option key={s.id} value={s.id}>{s.name} ({s.email})</option>)}
+              {students.filter((s) => (s.status || 'Active') === 'Active').map((s) => <option key={s.id} value={s.id}>{s.name} ({s.email})</option>)}
             </select>
             <select value={createForm.assign_course_id} onChange={(e) => setCreateForm({ ...createForm, assign_course_id: e.target.value })} className="w-full px-4 py-2 rounded-lg border border-slate-300" required>
               <option value="">Select assignment</option>
@@ -107,7 +123,7 @@ export default function FeeManagement() {
               <tr><th className="p-3">Student</th><th className="p-3">Course</th><th className="p-3">Total</th><th className="p-3">Paid</th><th className="p-3">Status</th><th className="p-3"></th></tr>
             </thead>
             <tbody>
-              {list.map((row) => (
+              {list.filter((row) => !search.trim() || (row.user_name && row.user_name.toLowerCase().includes(search.toLowerCase())) || (row.email && row.email.toLowerCase().includes(search.toLowerCase()))).map((row) => (
                 <tr key={row.id} className="border-t border-slate-200">
                   <td className="p-3 font-medium">{row.user_name}</td>
                   <td className="p-3">{row.course_title}</td>
@@ -115,6 +131,7 @@ export default function FeeManagement() {
                   <td className="p-3">{row.paid_amount}</td>
                   <td className="p-3"><span className={`px-2 py-0.5 rounded text-xs ${row.status === 'completed' ? 'bg-green-100 text-green-800' : row.status === 'partial' ? 'bg-amber-100 text-amber-800' : 'bg-red-100 text-red-800'}`}>{row.status}</span></td>
                   <td className="p-3">
+                    <Link to={`/admin/fee-management/${row.id}/invoice`} className="text-amber-600 hover:underline mr-2">Invoice</Link>
                     {row.status !== 'completed' && (
                       <button onClick={() => setShowPayment(row.id)} className="text-amber-600 hover:underline">Collect</button>
                     )}

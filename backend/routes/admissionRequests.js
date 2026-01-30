@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import { getDb } from '../db/index.js';
 import { requireAdmin } from '../middleware/auth.js';
+import { notifyAdmissionApproved } from '../services/notification.js';
 
 const router = Router();
 
@@ -49,6 +50,10 @@ router.put('/:id/process', requireAdmin, (req, res) => {
   db.prepare(
     'UPDATE admission_requests SET status=?, admin_notes=?, processed_by=?, processed_at=datetime(\'now\'), updated_at=datetime(\'now\') WHERE id=?'
   ).run(status, admin_notes || null, req.user.id, req.params.id);
+  if (status === 'approved') {
+    const branch = db.prepare('SELECT name FROM branches WHERE id = ?').get(existing.branch_id);
+    notifyAdmissionApproved(existing.user_id, branch?.name || 'Branch').catch(() => {});
+  }
   const row = db.prepare(
     `SELECT ar.*, u.name as user_name, b.name as branch_name FROM admission_requests ar JOIN users u ON ar.user_id = u.id JOIN branches b ON ar.branch_id = b.id WHERE ar.id = ?`
   ).get(req.params.id);

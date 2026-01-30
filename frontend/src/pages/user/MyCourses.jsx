@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
+import { useSettings } from '../../context/SettingsContext';
 import client from '../../api/client';
 
 export default function MyCourses() {
@@ -19,7 +20,7 @@ export default function MyCourses() {
   return (
     <div className="min-h-screen bg-slate-50">
       <header className="bg-slate-900 text-white px-6 py-4 flex items-center justify-between">
-        <Link to="/user/dashboard" className="text-xl font-semibold text-amber-400">Computer Institute</Link>
+        <Link to="/user/dashboard" className="text-xl font-semibold text-amber-400">{appName}</Link>
         <Link to="/user/dashboard" className="text-slate-300 hover:text-white text-sm">← Dashboard</Link>
       </header>
       <main className="max-w-4xl mx-auto p-6">

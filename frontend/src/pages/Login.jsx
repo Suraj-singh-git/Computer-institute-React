@@ -1,15 +1,19 @@
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { useSettings } from '../context/SettingsContext';
 import { useAuth } from '../context/AuthContext';
 import client from '../api/client';
 
 export default function Login() {
+  const { appName } = useSettings();
+  const location = useLocation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const { login } = useAuth();
   const navigate = useNavigate();
+  const successMessage = location.state?.message;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -30,10 +34,11 @@ export default function Login() {
     <div className="min-h-screen bg-slate-900 flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <Link to="/" className="text-2xl font-semibold text-amber-400">Computer Institute</Link>
+          <Link to="/" className="text-2xl font-semibold text-amber-400">{appName}</Link>
         </div>
         <form onSubmit={handleSubmit} className="bg-slate-800 rounded-2xl p-8 shadow-xl border border-slate-700">
           <h2 className="text-xl font-semibold text-white mb-6">Sign in</h2>
+          {successMessage && <p className="text-green-400 text-sm mb-4">{successMessage}</p>}
           {error && <p className="text-red-400 text-sm mb-4">{error}</p>}
           <input
             type="email"
@@ -54,7 +59,10 @@ export default function Login() {
           <button type="submit" disabled={loading} className="w-full py-3 rounded-lg bg-amber-500 text-slate-900 font-medium hover:bg-amber-400 disabled:opacity-50 transition">
             {loading ? 'Signing in...' : 'Sign in'}
           </button>
-          <p className="mt-4 text-center text-slate-400 text-sm">
+          <p className="mt-3 text-center text-slate-400 text-sm">
+            <Link to="/forgot-password" className="text-amber-400 hover:underline">Forgot password?</Link>
+          </p>
+          <p className="mt-2 text-center text-slate-400 text-sm">
             Don't have an account? <Link to="/register" className="text-amber-400 hover:underline">Register</Link>
           </p>
         </form>

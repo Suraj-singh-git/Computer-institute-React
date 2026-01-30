@@ -53,11 +53,11 @@ export default function Batches() {
             <h2 className="font-semibold text-slate-800">{editing === 'new' ? 'New Batch' : 'Edit Batch'}</h2>
             <select value={form.branch_id} onChange={(e) => setForm({ ...form, branch_id: e.target.value })} className="w-full px-4 py-2 rounded-lg border border-slate-300" required>
               <option value="">Select branch</option>
-              {branches.map((b) => <option key={b.id} value={b.id}>{b.name}</option>)}
+              {branches.filter((b) => b.is_active).map((b) => <option key={b.id} value={b.id}>{b.name}</option>)}
             </select>
             <select value={form.course_id} onChange={(e) => setForm({ ...form, course_id: e.target.value })} className="w-full px-4 py-2 rounded-lg border border-slate-300" required>
               <option value="">Select course</option>
-              {courses.filter((c) => !form.branch_id || c.branch_id == form.branch_id).map((c) => <option key={c.id} value={c.id}>{c.title}</option>)}
+              {courses.filter((c) => (!form.branch_id || c.branch_id == form.branch_id) && c.status).map((c) => <option key={c.id} value={c.id}>{c.title}</option>)}
             </select>
             <input placeholder="Batch name" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} className="w-full px-4 py-2 rounded-lg border border-slate-300" required />
             <input type="time" placeholder="Start time" value={form.start_time} onChange={(e) => setForm({ ...form, start_time: e.target.value })} className="w-full px-4 py-2 rounded-lg border border-slate-300" />

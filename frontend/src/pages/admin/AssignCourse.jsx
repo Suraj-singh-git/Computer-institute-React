@@ -14,7 +14,7 @@ export default function AssignCourse() {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    client.get(`/users/${id}`).then(({ data }) => setStudent(data)).catch(() => navigate('/students'));
+    client.get(`/users/${id}`).then(({ data }) => setStudent(data)).catch(() => navigate('/admin/students'));
     client.get('/branches').then(({ data }) => setBranches(data));
     client.get('/courses').then(({ data }) => setCourses(data));
     client.get('/batches').then(({ data }) => setBatches(data));
@@ -22,15 +22,15 @@ export default function AssignCourse() {
 
   useEffect(() => { setLoading(false); }, [student]);
 
-  const branchCourses = courses.filter((c) => c.branch_id == form.branch_id);
-  const branchBatches = batches.filter((b) => b.branch_id == form.branch_id && b.course_id == form.course_id);
+  const branchCourses = courses.filter((c) => c.branch_id == form.branch_id && c.status);
+  const branchBatches = batches.filter((b) => b.branch_id == form.branch_id && b.course_id == form.course_id && b.is_active);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
     try {
       await client.post('/assign-courses', { user_id: Number(id), branch_id: Number(form.branch_id), course_id: Number(form.course_id), batch_id: Number(form.batch_id) });
-      navigate('/students');
+      navigate('/admin/students');
     } catch (err) {
       setError(err.response?.data?.error || 'Failed to assign');
     }
@@ -41,7 +41,7 @@ export default function AssignCourse() {
   return (
     <div>
       <div className="mb-6">
-        <button onClick={() => navigate('/students')} className="text-slate-600 hover:underline mb-2 block">← Back to Students</button>
+        <button onClick={() => navigate('/admin/students')} className="text-slate-600 hover:underline mb-2 block">← Back to Students</button>
         <h1 className="text-2xl font-semibold text-slate-800">Assign Course to {student.name}</h1>
       </div>
       <form onSubmit={handleSubmit} className="bg-white rounded-xl border border-slate-200 p-6 max-w-md space-y-4">

@@ -4,9 +4,10 @@ A full-stack computer institute management system converted from the original La
 
 ## Features
 
-- **Public:** Home, Login, Register
+- **Public:** Home, Login, Register, Forgot Password, Reset Password (OTP)
 - **Student:** Dashboard, Profile, My Courses, Admission Request
-- **Admin:** Dashboard, Branches, Courses, Batches, Students, Assign Course, Fee Management, Admission Requests, Users
+- **Admin:** Dashboard, Branches, Courses, Batches, Students (Add/Edit), Assign Course, Fee Management, Fee Invoice, Admission Requests, Exams, Questions (MCQ/Short Answer), Email Templates, Users, Roles, Settings, Profile, Change Password
+- **Unauthorized:** Access Denied page when a student tries to access admin routes
 
 ## Tech Stack
 
@@ -49,14 +50,27 @@ App runs at **http://localhost:5173** with API proxy to the backend.
 |--------|------|-------------|
 | POST | /api/auth/login | Login |
 | POST | /api/auth/register | Register (student) |
-| GET | /api/me | Current user (requires auth) |
+| POST | /api/auth/change-password | Change password (auth) |
+| POST | /api/auth/request-otp | Request OTP for password reset (admin/branch-manager) |
+| POST | /api/auth/verify-otp | Verify OTP and set new password |
+| GET | /api/me | Current user (auth) |
+| PUT | /api/profile | Update current user name/email (auth) |
 | GET/POST/PUT/DELETE | /api/branches | Branches CRUD |
 | GET/POST/PUT/DELETE | /api/courses | Courses CRUD |
 | GET/POST/PUT/DELETE | /api/batches | Batches CRUD |
 | GET/POST/PUT/DELETE | /api/users | Users CRUD |
 | GET/POST/PUT/DELETE | /api/assign-courses | Assign course to student |
-| GET/POST | /api/fees | Fee collections; POST /api/fees/:id/payments to record payment |
-| GET/POST | /api/admission-requests | Admission requests; PUT /api/admission-requests/:id/process to process |
+| GET | /api/fees | Fee collections list |
+| GET | /api/fees/:id | Fee collection + payments |
+| GET | /api/fees/:id/invoice | Fee invoice (collection + payments + settings) |
+| POST | /api/fees | Create fee record (admin) |
+| POST | /api/fees/:id/payments | Record payment (admin) |
+| GET/POST | /api/admission-requests | List / create; PUT /api/admission-requests/:id/process to process |
+| GET/POST/PUT/DELETE | /api/exams | Exams CRUD |
+| GET/POST/PUT/DELETE | /api/questions | Questions CRUD (query exam_id; body includes answers for MCQ) |
+| GET/POST/PUT/DELETE | /api/email-templates | Email templates CRUD |
 | GET | /api/roles | List roles |
+| GET | /api/settings | Get settings |
+| PUT | /api/settings | Update settings (admin) |
 
-All routes except `/api/auth/*` require `Authorization: Bearer <token>`.
+All routes except `/api/auth/login`, `/api/auth/register`, `/api/auth/request-otp`, `/api/auth/verify-otp` require `Authorization: Bearer <token>`. Admin-only actions enforce `is_admin` on the backend where applicable.

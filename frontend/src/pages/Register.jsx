@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useSettings } from '../context/SettingsContext';
 import { useAuth } from '../context/AuthContext';
 import client from '../api/client';
 
@@ -33,7 +34,7 @@ export default function Register() {
     <div className="min-h-screen bg-slate-900 flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <Link to="/" className="text-2xl font-semibold text-amber-400">Computer Institute</Link>
+          <Link to="/" className="text-2xl font-semibold text-amber-400">{appName}</Link>
         </div>
         <form onSubmit={handleSubmit} className="bg-slate-800 rounded-2xl p-8 shadow-xl border border-slate-700">
           <h2 className="text-xl font-semibold text-white mb-6">Create account</h2>
