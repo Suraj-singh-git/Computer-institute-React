@@ -1,0 +1,30 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#050505"/>
+  <rect x="38" y="38" width="1124" height="554" rx="36" fill="url(#paint0_linear)" stroke="#FFD21F" stroke-opacity="0.22"/>
+  <circle cx="154" cy="126" r="118" fill="#FFD21F" fill-opacity="0.1"/>
+  <circle cx="1040" cy="520" r="156" fill="#FFD21F" fill-opacity="0.08"/>
+  <rect x="98" y="98" width="120" height="120" rx="30" fill="#080808" stroke="#FFD21F" stroke-opacity="0.45"/>
+  <path d="M131 136C135.286 125.286 143.857 119.929 156.714 119.929C169.571 119.929 178.143 125.286 182.429 136H167.429C165.286 132.714 161.929 131.071 157.357 131.071C150.643 131.071 145.929 134.143 143.214 140.286H182V150.143H141.286C141 151.286 140.857 152.571 140.857 154C140.857 155.286 141 156.5 141.286 157.643H182V167.5H143.214C145.929 173.643 150.643 176.714 157.357 176.714C161.929 176.714 165.286 175.071 167.429 171.786H182.429C178 182.643 169.357 188.071 156.5 188.071C143.5 188.071 134.857 182.643 130.571 171.786H121V161.929H129.5C129.214 160.643 129.071 159.357 129.071 158.071V154.214V150.357H121V140.5H130.571Z" fill="url(#paint1_linear)"/>
+  <text x="270" y="190" fill="#FFE98E" font-family="Merienda, serif" font-size="30" font-weight="700" letter-spacing="0.28em">S&amp;D DEVELOPERS</text>
+  <text x="270" y="292" fill="#FFF4C3" font-family="Merienda, serif" font-size="74" font-weight="700">Website Design, Laravel Development</text>
+  <text x="270" y="374" fill="#FFF0A8" font-family="Merienda, serif" font-size="74" font-weight="700">&amp; Business Growth Focused Web Solutions</text>
+  <text x="270" y="452" fill="#FFF7CF" fill-opacity="0.86" font-family="Merienda, serif" font-size="29" font-weight="500">
+    Premium business websites, landing pages, APIs, payment integrations, booking systems, and
+  </text>
+  <text x="270" y="494" fill="#FFF7CF" fill-opacity="0.86" font-family="Merienda, serif" font-size="29" font-weight="500">
+    practical backend development by Suraj Singh.
+  </text>
+  <rect x="270" y="536" width="322" height="56" rx="28" fill="#FFD21F"/>
+  <text x="314" y="572" fill="#050505" font-family="Merienda, serif" font-size="28" font-weight="700">sanddevelopers portfolio</text>
+  <defs>
+    <linearGradient id="paint0_linear" x1="69" y1="72" x2="1140" y2="558" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#101010"/>
+      <stop offset="0.48" stop-color="#1B1604"/>
+      <stop offset="1" stop-color="#0A0A0A"/>
+    </linearGradient>
+    <linearGradient id="paint1_linear" x1="121" y1="119.929" x2="182.429" y2="188.071" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFE66D"/>
+      <stop offset="1" stop-color="#FFD21F"/>
+    </linearGradient>
+  </defs>
+</svg>
