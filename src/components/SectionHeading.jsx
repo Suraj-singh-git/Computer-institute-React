@@ -28,7 +28,7 @@ function SectionHeading({
       <TypeText
         as={titleAs}
         text={title}
-        className={`mt-5 font-display text-[1.9rem] leading-tight tracking-tight sm:text-[2.4rem] md:text-5xl ${titleClass}`}
+        className={`mt-5 font-display text-[1.9rem] leading-tight tracking-tight text-balance sm:text-[2.4rem] md:text-5xl ${titleClass}`}
         speed={18}
       />
       <TypeText

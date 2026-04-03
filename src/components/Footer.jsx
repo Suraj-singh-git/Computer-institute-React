@@ -49,7 +49,7 @@ function Footer() {
           <div className="mt-4 space-y-3 text-base text-yellow-100/80">
             <a
               href="mailto:surajsingh20796@gmail.com"
-              className="block transition hover:text-yellow-200"
+              className="block break-all transition hover:text-yellow-200"
             >
               surajsingh20796@gmail.com
             </a>
@@ -72,8 +72,7 @@ function Footer() {
         </div>
       </div>
       <div className="border-t border-yellow-300/12 px-4 py-5 text-center text-sm text-yellow-100/55 md:px-6">
-        Copyright {year} S&amp;D Developers. Portfolio of Suraj Singh, built in
-        React and Tailwind CSS.
+        Copyright {year} S&amp;D Developers. Portfolio of Suraj Singh.
       </div>
     </footer>
   )

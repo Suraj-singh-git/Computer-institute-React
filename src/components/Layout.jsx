@@ -11,7 +11,7 @@ function Layout() {
       <SiteBackdrop />
       <ScrollToTop />
       <Header />
-      <div className="relative z-10">
+      <div className="relative z-10 pt-[5.7rem] sm:pt-[6.2rem] md:pt-[6.8rem]">
         <Outlet />
       </div>
       <Footer />

@@ -42,6 +42,11 @@ body {
   font-family: 'Merienda', cursive;
 }
 
+.font-display {
+  overflow-wrap: anywhere;
+  text-wrap: balance;
+}
+
 .btn-primary,
 .btn-secondary,
 .btn-dark,
@@ -144,17 +149,18 @@ body {
 }
 
 .hero-title {
-  max-width: 12ch;
+  max-width: 10.5ch;
   margin-inline: auto;
-  letter-spacing: 0.01em;
-  line-height: 1.14;
+  letter-spacing: 0;
+  line-height: 1.08;
+  overflow-wrap: anywhere;
   text-wrap: balance;
 }
 
 @media (min-width: 640px) {
   .hero-title {
-    max-width: 13ch;
-    line-height: 1.12;
+    max-width: 11.5ch;
+    line-height: 1.06;
   }
 }
 
@@ -164,8 +170,8 @@ body {
   }
 
   .hero-title {
-    max-width: 15ch;
-    line-height: 1.08;
+    max-width: 13.5ch;
+    line-height: 1.02;
   }
 }
 

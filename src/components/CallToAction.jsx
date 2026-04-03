@@ -25,7 +25,7 @@ function CallToAction({
             <TypeText
               as="h2"
               text={title}
-              className="mt-4 font-display text-[2rem] leading-tight tracking-tight text-yellow-200 sm:text-[2.7rem] md:text-6xl"
+              className="mt-4 font-display text-[2rem] leading-tight tracking-tight text-balance text-yellow-200 sm:text-[2.7rem] md:text-6xl"
               speed={16}
             />
             <TypeText
