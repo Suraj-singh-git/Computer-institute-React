@@ -26,7 +26,7 @@ function Header() {
     <header className="sticky top-0 z-50 px-2 pt-3 sm:px-3 md:px-5 md:pt-4 xl:px-6">
       <div className="glass-panel w-full rounded-[1.75rem] px-3 py-3 sm:px-4 md:rounded-full md:px-5">
         <div className="flex items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
+          <div className="flex min-w-0 items-center gap-2.5 sm:gap-3">
             <NavLink to="/" onClick={() => setIsOpen(false)}>
               <BrandMark compact invert />
             </NavLink>
@@ -53,7 +53,7 @@ function Header() {
           <button
             type="button"
             onClick={() => setIsOpen((open) => !open)}
-            className="btn-secondary px-4 lg:hidden"
+            className="btn-secondary px-3.5 lg:hidden"
             aria-expanded={isOpen}
             aria-label="Toggle menu"
           >

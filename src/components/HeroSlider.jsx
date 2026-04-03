@@ -64,8 +64,8 @@ function HeroSlider({ slides, stats = [] }) {
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,210,31,0.18),transparent_25%),radial-gradient(circle_at_bottom_left,rgba(255,210,31,0.16),transparent_28%)]" />
         </div>
 
-        <div className="relative z-10 flex h-full items-center justify-center px-4 py-10 pb-32 text-center sm:px-5 sm:py-12 sm:pb-36 md:px-10 lg:px-16">
-          <div key={activeSlide.title} className="max-w-4xl">
+        <div className="relative z-10 px-4 py-8 text-center sm:px-5 sm:py-10 md:px-8 lg:flex lg:h-full lg:items-center lg:justify-center lg:px-16 lg:py-10 lg:pb-36">
+          <div key={activeSlide.title} className="mx-auto max-w-4xl">
             <div className="pill-badge inline-flex items-center gap-2 border border-yellow-200/20 bg-black/52 px-4 py-2 text-yellow-100 backdrop-blur">
               <span className="h-2 w-2 rounded-full bg-brand [animation:pulseGlow_4s_ease-in-out_infinite]" />
               <TypeText text={activeSlide.eyebrow} speed={24} />
@@ -74,14 +74,14 @@ function HeroSlider({ slides, stats = [] }) {
             <TypeText
               as="h1"
               text={activeSlide.title}
-              className="hero-title mt-6 font-display text-[clamp(1.95rem,5.5vw,4.25rem)] text-yellow-200"
+              className="hero-title mt-5 font-display text-[clamp(1.75rem,9vw,4.25rem)] text-yellow-200 sm:mt-6"
               speed={15}
             />
 
             <TypeText
               as="p"
               text={activeSlide.text}
-              className="mx-auto mt-5 max-w-2xl text-base leading-7 text-yellow-50/88 sm:text-lg sm:leading-8"
+              className="mx-auto mt-4 max-w-2xl text-[0.98rem] leading-7 text-yellow-50/88 sm:mt-5 sm:text-lg sm:leading-8"
               speed={8}
               caret={false}
             />
@@ -98,16 +98,16 @@ function HeroSlider({ slides, stats = [] }) {
             </div>
 
             {stats.length ? (
-              <div className="mx-auto mt-8 grid max-w-4xl grid-cols-3 gap-3 sm:gap-4">
+              <div className="mx-auto mt-6 grid max-w-xl gap-3 sm:mt-8 sm:max-w-4xl sm:grid-cols-3 sm:gap-4">
                 {stats.map((stat) => (
                   <div
                     key={stat.label}
                     className="rounded-[1.35rem] border border-yellow-200/18 bg-black/58 px-3 py-3 backdrop-blur sm:rounded-[1.8rem] sm:px-5 sm:py-5"
                   >
-                    <p className="font-display text-[1.35rem] text-yellow-200 sm:text-[2.2rem]">
+                    <p className="font-display text-[1.45rem] text-yellow-200 sm:text-[2.2rem]">
                       {stat.value}
                     </p>
-                    <p className="mt-1 text-[11px] leading-4 text-yellow-50/82 sm:mt-2 sm:text-base sm:leading-7">
+                    <p className="mt-1 text-xs leading-5 text-yellow-50/82 sm:mt-2 sm:text-base sm:leading-7">
                       {stat.label}
                     </p>
                   </div>
@@ -117,9 +117,9 @@ function HeroSlider({ slides, stats = [] }) {
           </div>
         </div>
 
-        <div className="absolute bottom-4 left-3 right-3 z-20 sm:bottom-5 sm:left-5 sm:right-5 md:bottom-6 md:left-6 md:right-6">
-          <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-            <div className="flex flex-nowrap items-center gap-3 overflow-x-auto rounded-full border border-yellow-200/12 bg-black/40 px-3 py-3 backdrop-blur [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:flex-wrap md:justify-start">
+        <div className="relative z-20 px-3 pb-4 pt-2 sm:px-5 sm:pb-5 sm:pt-3 lg:absolute lg:bottom-6 lg:left-6 lg:right-6 lg:px-0 lg:pb-0 lg:pt-0">
+          <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+            <div className="flex flex-nowrap items-center gap-3 overflow-x-auto rounded-[1.5rem] border border-yellow-200/12 bg-black/40 px-3 py-3 backdrop-blur [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:rounded-full lg:flex-wrap lg:justify-start">
               {slides.map((slide, index) => (
                 <button
                   key={slide.title}
@@ -137,7 +137,7 @@ function HeroSlider({ slides, stats = [] }) {
               ))}
             </div>
 
-            <div className="flex items-center justify-center gap-3 rounded-full border border-yellow-200/12 bg-black/40 px-3 py-3 backdrop-blur md:justify-end">
+            <div className="flex items-center justify-center gap-3 rounded-[1.5rem] border border-yellow-200/12 bg-black/40 px-3 py-3 backdrop-blur sm:rounded-full lg:justify-end">
               <button
                 type="button"
                 onClick={() =>

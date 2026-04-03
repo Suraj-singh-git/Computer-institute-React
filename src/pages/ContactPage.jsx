@@ -126,7 +126,7 @@ function ContactPage() {
 
       <section className="mx-auto max-w-7xl px-2 pt-8 sm:px-3 md:px-6 md:pt-16">
         <div className="grid gap-8 lg:grid-cols-[0.92fr_1.08fr]">
-          <div className="glass-panel rounded-[2.4rem] p-8 md:p-10">
+          <div className="glass-panel rounded-[2.4rem] p-6 sm:p-8 md:p-10">
             <SectionHeading
               badge="Contact"
               title="Let us discuss your website, redesign, or development requirement."
@@ -150,17 +150,17 @@ function ContactPage() {
             </div>
           </div>
 
-          <div className="soft-panel rounded-[2.4rem] p-8 text-slate-950 md:p-10">
+          <div className="soft-panel rounded-[2.4rem] p-6 sm:p-8 text-slate-950 md:p-10">
             <TypeText
               as="h2"
               text="Start your enquiry"
-              className="font-display text-4xl leading-tight tracking-tight text-black md:text-5xl"
+              className="font-display text-[2.1rem] leading-tight tracking-tight text-black sm:text-4xl md:text-5xl"
               speed={18}
             />
             <TypeText
               as="p"
               text="Share your business type, website requirement, target features, and budget range. I can then understand whether you need a landing page, business website, Laravel development, or a larger custom build."
-              className="mt-4 max-w-2xl text-xl leading-8 text-slate-800"
+              className="mt-4 max-w-2xl text-base leading-7 text-slate-800 sm:text-xl sm:leading-8"
               speed={8}
               caret={false}
             />

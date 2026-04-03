@@ -39,14 +39,14 @@ function AboutPage() {
             <div className="relative overflow-hidden rounded-[1.8rem]">
               <ProfilePhoto
                 alt="Suraj Singh profile portrait"
-                className="h-[360px] w-full object-cover sm:h-[440px] lg:h-[520px]"
+                className="h-[300px] w-full object-cover sm:h-[440px] lg:h-[520px]"
                 objectPosition="center 18%"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/65 via-transparent to-transparent" />
             </div>
           </div>
 
-          <div className="glass-panel rounded-[2.4rem] p-8 md:p-10">
+          <div className="glass-panel rounded-[2.4rem] p-6 sm:p-8 md:p-10">
             <SectionHeading
               badge="About Me"
               title="Laravel developer with hands-on experience in business websites, backend systems, and integration-heavy features."
@@ -61,7 +61,7 @@ function AboutPage() {
                   key={stat.label}
                   className="rounded-[1.6rem] border border-yellow-300/16 bg-yellow-300/7 p-5"
                 >
-                  <p className="font-display text-3xl font-bold text-white">
+                  <p className="font-display text-[2rem] font-bold text-white sm:text-3xl">
                     {stat.value}
                   </p>
                   <p className="mt-2 text-base leading-7 text-slate-300">
@@ -79,13 +79,13 @@ function AboutPage() {
           {values.map((value, index) => (
             <article
               key={value.title}
-              className={`rounded-[2.2rem] p-8 ${
+              className={`rounded-[2.2rem] p-6 sm:p-8 ${
                 index === 1 ? 'glass-panel text-white' : 'soft-panel text-slate-950'
               }`}
             >
-              <h3 className="font-display text-[1.9rem] font-bold sm:text-3xl">{value.title}</h3>
+              <h3 className="font-display text-[1.7rem] font-bold sm:text-3xl">{value.title}</h3>
               <p
-                className={`mt-4 text-lg leading-8 ${
+                className={`mt-4 text-base leading-7 sm:text-lg sm:leading-8 ${
                   index === 1 ? 'text-slate-300' : 'text-slate-600'
                 }`}
               >
@@ -98,7 +98,7 @@ function AboutPage() {
 
       <section className="mx-auto mt-16 max-w-7xl px-2 sm:px-3 md:mt-24 md:px-6">
         <div className="grid gap-6 lg:grid-cols-[0.84fr_1.16fr]">
-          <div className="glass-panel rounded-[2.4rem] p-8 md:p-10">
+          <div className="glass-panel rounded-[2.4rem] p-6 sm:p-8 md:p-10">
             <SectionHeading
               badge="Experience"
               title="Professional roles that shaped my backend and product development approach."
@@ -111,7 +111,7 @@ function AboutPage() {
             {experienceTimeline.map((item, index) => (
               <article
                 key={`${item.company}-${item.duration}`}
-                className={`rounded-[2.2rem] p-8 ${
+                className={`rounded-[2.2rem] p-6 sm:p-8 ${
                   index === 0 ? 'soft-panel text-slate-950' : 'glass-panel text-white'
                 }`}
               >
@@ -124,7 +124,7 @@ function AboutPage() {
                     >
                       {item.role}
                     </p>
-                    <h3 className="mt-3 font-display text-[1.9rem] font-bold sm:text-3xl">
+                    <h3 className="mt-3 font-display text-[1.7rem] font-bold sm:text-3xl">
                       {item.company}
                     </h3>
                   </div>
@@ -137,7 +137,7 @@ function AboutPage() {
                   </p>
                 </div>
                 <ul
-                  className={`mt-6 space-y-3 text-lg leading-8 ${
+                  className={`mt-6 space-y-3 text-base leading-7 sm:text-lg sm:leading-8 ${
                     index === 0 ? 'text-slate-600' : 'text-slate-300'
                   }`}
                 >
@@ -153,7 +153,7 @@ function AboutPage() {
 
       <section className="mx-auto mt-16 max-w-7xl px-2 sm:px-3 md:mt-24 md:px-6">
         <div className="grid gap-6 lg:grid-cols-2">
-          <div className="soft-panel rounded-[2.3rem] p-8 text-slate-950 md:p-10">
+          <div className="soft-panel rounded-[2.3rem] p-6 sm:p-8 text-slate-950 md:p-10">
             <SectionHeading
               badge="Education"
               title="Academic foundation that supports practical web development work."
@@ -179,7 +179,7 @@ function AboutPage() {
             </div>
           </div>
 
-          <div className="glass-panel rounded-[2.3rem] p-8 md:p-10">
+          <div className="glass-panel rounded-[2.3rem] p-6 sm:p-8 md:p-10">
             <SectionHeading
               badge="Workflow"
               title="How I keep development clean, controlled, and ready for launch."

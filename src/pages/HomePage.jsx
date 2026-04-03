@@ -92,7 +92,7 @@ function HomePage() {
                 className="h-48 w-full object-cover sm:h-56"
               />
               <div className="p-6">
-                <h3 className="font-display text-3xl font-bold sm:text-4xl">{service.title}</h3>
+                <h3 className="font-display text-[2rem] font-bold sm:text-4xl">{service.title}</h3>
                 <p
                   className={`mt-4 text-base leading-7 ${
                     index % 2 === 0 ? 'text-slate-800' : 'text-yellow-100/74'
@@ -149,7 +149,7 @@ function HomePage() {
             {pricingPlans.map((plan) => (
               <article
                 key={plan.name}
-                className={`rounded-[2.2rem] p-7 ${
+                className={`rounded-[2.2rem] p-6 sm:p-7 ${
                   plan.featured ? 'soft-panel text-slate-950' : 'glass-panel text-white'
                 }`}
               >
@@ -160,9 +160,9 @@ function HomePage() {
                 >
                   {plan.featured ? 'Most Popular' : 'Package'}
                 </p>
-                <h3 className="mt-4 font-display text-4xl font-bold sm:text-5xl">{plan.name}</h3>
+                <h3 className="mt-4 font-display text-3xl font-bold sm:text-5xl">{plan.name}</h3>
                 <p
-                  className={`mt-5 text-2xl font-bold sm:text-3xl ${
+                  className={`mt-4 text-[1.7rem] font-bold sm:mt-5 sm:text-3xl ${
                     plan.featured ? 'text-slate-950' : 'text-yellow-100'
                   }`}
                 >
@@ -222,12 +222,12 @@ function HomePage() {
             {launchSteps.map((step) => (
               <article
                 key={step.step}
-                className="glass-panel relative rounded-[2.2rem] p-7 text-center text-white"
+                className="glass-panel relative rounded-[2.2rem] p-6 text-center text-white sm:p-7"
               >
                 <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-yellow-300/22 bg-black text-2xl font-bold text-yellow-200">
                   {step.step}
                 </div>
-                <h3 className="mt-6 font-display text-3xl font-bold text-yellow-100 sm:text-4xl">
+                <h3 className="mt-5 font-display text-[2rem] font-bold text-yellow-100 sm:mt-6 sm:text-4xl">
                   {step.title}
                 </h3>
                 <p className="mt-4 text-base leading-7 text-yellow-50/74">{step.text}</p>
@@ -267,7 +267,7 @@ function HomePage() {
                 >
                   {project.category}
                 </p>
-                <h3 className="mt-4 font-display text-3xl font-bold sm:text-4xl">{project.title}</h3>
+                <h3 className="mt-4 font-display text-[2rem] font-bold sm:text-4xl">{project.title}</h3>
                 <p
                   className={`mt-4 text-base leading-7 ${
                     index === 1 ? 'text-slate-700' : 'text-yellow-50/74'
@@ -357,7 +357,7 @@ function HomePage() {
               <p className="text-xs font-bold uppercase tracking-[0.28em] text-brand-deep">
                 Want to discuss project
               </p>
-              <h2 className="mt-4 font-display text-4xl leading-tight font-bold sm:text-5xl md:text-6xl">
+              <h2 className="mt-4 font-display text-[2.2rem] leading-tight font-bold sm:text-5xl md:text-6xl">
                 Need a website that looks stronger and explains your business better?
               </h2>
               <p className="mt-5 text-base leading-8 text-slate-700 md:text-lg">

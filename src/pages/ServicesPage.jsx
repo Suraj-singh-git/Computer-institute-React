@@ -16,7 +16,7 @@ function ServicesPage() {
 
       <section className="mx-auto max-w-7xl px-2 pt-8 sm:px-3 md:px-6 md:pt-16">
         <div className="grid items-center gap-8 lg:grid-cols-[0.98fr_1.02fr]">
-          <div className="glass-panel rounded-[2.4rem] p-8 md:p-10">
+          <div className="glass-panel rounded-[2.4rem] p-6 sm:p-8 md:p-10">
             <SectionHeading
               badge="Services"
               title="Website design and development services focused on practical business results."
@@ -34,7 +34,7 @@ function ServicesPage() {
                 className="h-[320px] w-full object-cover sm:h-[420px]"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
-              <div className="absolute inset-x-4 bottom-4 rounded-[1.4rem] bg-black/80 p-4 text-white backdrop-blur sm:inset-x-6 sm:bottom-6 sm:rounded-[1.6rem] sm:p-5">
+              <div className="absolute inset-x-3 bottom-3 rounded-[1.25rem] bg-black/80 p-3 text-white backdrop-blur sm:inset-x-6 sm:bottom-6 sm:rounded-[1.6rem] sm:p-5">
                 <TypeText
                   as="p"
                   text="Modern delivery stack"
@@ -44,7 +44,7 @@ function ServicesPage() {
                 <TypeText
                   as="p"
                   text="Responsive websites, backend workflows, payment setup, and business-focused development delivered in one connected process."
-                  className="mt-3 text-xl leading-8 text-yellow-50/82"
+                  className="mt-2 text-base leading-7 text-yellow-50/82 sm:mt-3 sm:text-xl sm:leading-8"
                   speed={8}
                   caret={false}
                 />
@@ -59,16 +59,16 @@ function ServicesPage() {
           {services.map((service, index) => (
             <article
               key={service.title}
-              className={`rounded-[2.2rem] p-8 ${
+              className={`rounded-[2.2rem] p-6 sm:p-8 ${
                 index % 2 === 0 ? 'soft-panel text-slate-950' : 'glass-panel text-yellow-50'
               }`}
             >
               <ServiceIcon type={service.icon} />
-              <h3 className="mt-6 font-display text-3xl font-bold">
+              <h3 className="mt-5 font-display text-[2rem] font-bold sm:mt-6 sm:text-3xl">
                 {service.title}
               </h3>
               <p
-                className={`mt-4 text-lg leading-8 ${
+                className={`mt-4 text-base leading-7 sm:text-lg sm:leading-8 ${
                   index % 2 === 0 ? 'text-slate-800' : 'text-yellow-100/75'
                 }`}
               >
@@ -90,7 +90,7 @@ function ServicesPage() {
 
       <section className="mx-auto mt-16 max-w-7xl px-2 sm:px-3 md:mt-24 md:px-6">
         <div className="grid gap-6 lg:grid-cols-[0.82fr_1.18fr]">
-          <div className="glass-panel rounded-[2.3rem] p-8 md:p-10">
+          <div className="glass-panel rounded-[2.3rem] p-6 sm:p-8 md:p-10">
             <SectionHeading
               badge="Process"
               title="A clear process helps every website stay cleaner, faster, and easier to manage."
@@ -102,12 +102,12 @@ function ServicesPage() {
             {processSteps.map((step, index) => (
               <article
                 key={step.title}
-                className="soft-panel rounded-[2rem] p-6 text-slate-950"
+                className="soft-panel rounded-[2rem] p-5 sm:p-6 text-slate-950"
               >
                 <p className="text-xs font-bold uppercase tracking-[0.24em] text-brand">
                   Step {index + 1}
                 </p>
-                <h3 className="mt-4 font-display text-3xl font-bold">
+                <h3 className="mt-4 font-display text-[2rem] font-bold sm:text-3xl">
                   {step.title}
                 </h3>
                 <p className="mt-4 text-base leading-7 text-slate-700">
@@ -120,7 +120,7 @@ function ServicesPage() {
       </section>
 
       <section className="mx-auto mt-16 max-w-7xl px-2 sm:px-3 md:mt-24 md:px-6">
-        <div className="glass-panel rounded-[2.4rem] p-8 md:p-10">
+        <div className="glass-panel rounded-[2.4rem] p-6 sm:p-8 md:p-10">
           <SectionHeading
             badge="FAQ"
             title="Common questions before starting a website or development project"
@@ -133,8 +133,8 @@ function ServicesPage() {
                 key={faq.question}
                 className="rounded-[1.7rem] border border-yellow-300/16 bg-yellow-300/7 p-6"
               >
-                <h3 className="text-2xl font-bold text-yellow-100">{faq.question}</h3>
-                <p className="mt-4 text-lg leading-8 text-yellow-100/75">
+                <h3 className="text-xl font-bold text-yellow-100 sm:text-2xl">{faq.question}</h3>
+                <p className="mt-4 text-base leading-7 text-yellow-100/75 sm:text-lg sm:leading-8">
                   {faq.answer}
                 </p>
               </article>

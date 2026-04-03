@@ -28,13 +28,13 @@ function SectionHeading({
       <TypeText
         as={titleAs}
         text={title}
-        className={`mt-5 font-display text-[2.35rem] leading-tight tracking-tight sm:text-[2.8rem] md:text-5xl ${titleClass}`}
+        className={`mt-5 font-display text-[1.9rem] leading-tight tracking-tight sm:text-[2.4rem] md:text-5xl ${titleClass}`}
         speed={18}
       />
       <TypeText
         as="p"
         text={text}
-        className={`mt-5 text-lg leading-8 ${textClass}`}
+        className={`mt-4 text-base leading-7 sm:mt-5 sm:text-lg sm:leading-8 ${textClass}`}
         speed={8}
         caret={false}
       />

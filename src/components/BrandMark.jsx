@@ -7,10 +7,10 @@ function BrandMark({ compact = false, invert = false }) {
   const textClass = invert ? 'text-yellow-100/80' : 'text-yellow-100/80'
 
   return (
-    <div className="flex items-center gap-3">
+    <div className="flex min-w-0 items-center gap-2.5 sm:gap-3">
       <svg
         viewBox="0 0 64 64"
-        className="h-10 w-10 shrink-0 sm:h-11 sm:w-11"
+        className="h-9 w-9 shrink-0 sm:h-11 sm:w-11"
         role="img"
         aria-label="S and D Developers logo"
       >
@@ -23,11 +23,11 @@ function BrandMark({ compact = false, invert = false }) {
      
         
       </svg>
-      <div>
+      <div className="min-w-0">
         <TypeText
           as="p"
           text="S&D Developers"
-          className={`font-brand-script text-[1.55rem] leading-none tracking-tight sm:text-[1.9rem] ${titleClass}`}
+          className={`font-brand-script text-[1.22rem] leading-none tracking-tight sm:text-[1.9rem] ${titleClass}`}
           speed={34}
         />
         {!compact ? (

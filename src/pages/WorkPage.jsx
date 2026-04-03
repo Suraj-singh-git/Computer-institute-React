@@ -22,7 +22,7 @@ function WorkPage() {
 
       <section className="mx-auto max-w-7xl px-2 pt-8 sm:px-3 md:px-6 md:pt-16">
         <div className="grid items-center gap-8 lg:grid-cols-[1fr_1fr]">
-          <div className="glass-panel rounded-[2.4rem] p-8 md:p-10">
+          <div className="glass-panel rounded-[2.4rem] p-6 sm:p-8 md:p-10">
             <SectionHeading
               badge="Selected Projects"
               title="Real client work across service websites, platforms, and feature-rich business builds."
@@ -36,7 +36,7 @@ function WorkPage() {
               <img
                 src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1200&q=80"
                 alt="Team working on modern product and backend systems"
-                className="h-[320px] w-full object-cover sm:h-[420px]"
+                className="h-[260px] w-full object-cover sm:h-[420px]"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-950/5 to-transparent" />
             </div>
@@ -57,11 +57,11 @@ function WorkPage() {
                 <img
                   src={project.image}
                   alt={project.title}
-                  className={`h-full min-h-[360px] w-full object-cover ${
+                  className={`h-full min-h-[260px] w-full object-cover sm:min-h-[320px] ${
                     index % 2 === 1 ? 'lg:order-2' : ''
                   }`}
                 />
-                <div className="flex flex-col justify-center p-8 md:p-10">
+                <div className="flex flex-col justify-center p-6 sm:p-8 md:p-10">
                   <p
                     className={`text-xs font-bold uppercase tracking-[0.26em] ${
                       index % 2 === 0 ? 'text-brand' : 'text-yellow-200'
@@ -69,18 +69,18 @@ function WorkPage() {
                   >
                     {project.category}
                   </p>
-                  <h2 className="mt-4 font-display text-3xl font-bold tracking-tight sm:text-4xl">
+                  <h2 className="mt-4 font-display text-[2rem] font-bold tracking-tight sm:text-4xl">
                     {project.title}
                   </h2>
                   <p
-                    className={`mt-5 text-lg font-semibold leading-8 ${
+                    className={`mt-4 text-base font-semibold leading-7 sm:mt-5 sm:text-lg sm:leading-8 ${
                       index % 2 === 0 ? 'text-slate-700' : 'text-slate-200'
                     }`}
                   >
                     {project.result}
                   </p>
                   <p
-                    className={`mt-4 text-lg leading-8 ${
+                    className={`mt-4 text-base leading-7 sm:text-lg sm:leading-8 ${
                       index % 2 === 0 ? 'text-slate-600' : 'text-slate-300'
                     }`}
                   >
